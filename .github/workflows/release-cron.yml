@@ -2,12 +2,12 @@ name: release-cron
 
 on:
   schedule:
-    - cron: "0 1 * * 5" # 每周五的12点（UTC时间）
+    - cron: "0 0 * * 2,5" # 每周五的12点（UTC时间） 
   workflow_dispatch:
 
 jobs:
   create_release:
-    name: get version and create release
+    name: get version 和 create release
     runs-on: ubuntu-latest
     steps:
       - name: version check
