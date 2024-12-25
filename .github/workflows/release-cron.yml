@@ -53,8 +53,8 @@ jobs:
 
           androidId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-android.yml")) | .id')
           pcId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-pc.yml")) | .id')
-          dockerId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-docker.yml")) | .id')
-          iosId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-ios.yml")) | .id')
+          #dockerId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-docker.yml")) | .id')
+          #iosId=$(echo "$response" | jq -r '.workflows | .[] | select(.path | contains("release-ios.yml")) | .id')
 
 
           curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${androidId}/dispatches" -d "{\"ref\": \"main\", \"inputs\": {\"version\": \"${{ steps.version.outputs.release_version }}\", \"packageManager\": \"${{ steps.version.outputs.package_manager }}\"}}"
